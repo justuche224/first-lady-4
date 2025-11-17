@@ -1,0 +1,31 @@
+"use client";
+
+import Link from "next/link";
+import { Logo } from "./logo";
+import { usePathname } from "next/navigation";
+
+export const Header = () => {
+  const pathname = usePathname();
+  const isDashboard = pathname.startsWith("/dashboard");
+
+  if (isDashboard) {
+    return null;
+  }
+
+  return (
+    <div className="fixed z-50 pt-8 md:pt-14 top-0 left-0 w-full">
+      <header className="flex items-center justify-between container">
+        <Link href="/">
+          <Logo className="w-[100px] md:w-[120px]" />
+        </Link>
+        <div></div>
+        <Link
+          className="uppercase transition-colors ease-out duration-150 font-mono text-primary hover:text-primary/80"
+          href="/auth/sign-in"
+        >
+          Sign In
+        </Link>
+      </header>
+    </div>
+  );
+};
