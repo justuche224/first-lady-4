@@ -204,7 +204,7 @@ export default function DoctorsManagement({
                   <TableHead>Doctor</TableHead>
                   <TableHead>License</TableHead>
                   <TableHead>Specialty</TableHead>
-                  <TableHead>Department</TableHead>
+                  {/* <TableHead>Department</TableHead> */}
                   <TableHead>Experience</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
@@ -239,11 +239,11 @@ export default function DoctorsManagement({
                         </code>
                       </TableCell>
                       <TableCell>{doctor.specialty}</TableCell>
-                      <TableCell>
+                      {/* <TableCell>
                         {doctor.departmentName || (
                           <span className="text-muted-foreground">—</span>
                         )}
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell>
                         {doctor.yearsOfExperience !== null
                           ? `${doctor.yearsOfExperience} years`
@@ -439,7 +439,7 @@ function CreateDoctorDialog({
                 required
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 hidden">
               <Label htmlFor="departmentId">Department</Label>
               <Select
                 value={formData.departmentId?.toString() || "none"}
