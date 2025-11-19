@@ -370,15 +370,15 @@ export default function AppointmentsManagement({
                   filters.doctorId ||
                   filters.patientId ||
                   filters.status) && (
-                  <NormalButton
-                    variant="outline"
-                    onClick={clearFilters}
-                    disabled={isPending}
-                    className="w-full sm:w-auto"
-                  >
-                    Clear
-                  </NormalButton>
-                )}
+                    <NormalButton
+                      variant="outline"
+                      onClick={clearFilters}
+                      disabled={isPending}
+                      className="w-full sm:w-auto"
+                    >
+                      Clear
+                    </NormalButton>
+                  )}
               </div>
             </div>
           </div>
@@ -467,10 +467,10 @@ export default function AppointmentsManagement({
                               appointment.status === "completed"
                                 ? "default"
                                 : appointment.status === "cancelled"
-                                ? "destructive"
-                                : appointment.status === "confirmed"
-                                ? "default"
-                                : "secondary"
+                                  ? "destructive"
+                                  : appointment.status === "confirmed"
+                                    ? "default"
+                                    : "secondary"
                             }
                           >
                             {appointment.status || "—"}
@@ -590,7 +590,7 @@ function CreateAppointmentDialog({
                   setFormData({ ...formData, patientId: parseInt(value) })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select patient" />
                 </SelectTrigger>
                 <SelectContent className="bg-background">
@@ -612,7 +612,7 @@ function CreateAppointmentDialog({
                   setFormData({ ...formData, doctorId: parseInt(value) })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select doctor" />
                 </SelectTrigger>
                 <SelectContent className="bg-background">
@@ -669,7 +669,7 @@ function CreateAppointmentDialog({
                   setFormData({ ...formData, type: value })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent className="bg-background">
@@ -707,7 +707,7 @@ function CreateAppointmentDialog({
                 setFormData({ ...formData, status: value })
               }
             >
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-background">
@@ -765,8 +765,8 @@ function EditAppointmentDialog({
       appointment.appointmentDate instanceof Date
         ? appointment.appointmentDate.toISOString().split("T")[0]
         : appointment.appointmentDate
-        ? new Date(appointment.appointmentDate).toISOString().split("T")[0]
-        : "",
+          ? new Date(appointment.appointmentDate).toISOString().split("T")[0]
+          : "",
     appointmentTime: appointment.appointmentTime || "",
     duration: appointment.duration || 30,
     type: appointment.type || "",
@@ -853,7 +853,7 @@ function EditAppointmentDialog({
                   setFormData({ ...formData, type: value })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent className="bg-background">
@@ -900,7 +900,7 @@ function EditAppointmentDialog({
                 })
               }
             >
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-background">
