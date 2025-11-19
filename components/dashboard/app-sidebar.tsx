@@ -121,7 +121,7 @@ const [signingOut, setSigningOut] = useState(false);
         <DashboardNavigation routes={dashboardRoutes} />
       </SidebarContent>
       <SidebarFooter className="px-2">
-        <NormalButton onClick={logout} variant="outline" className="w-full">
+        <NormalButton onClick={logout} className="w-full">
           {signingOut ? <Loader2 className="size-4 animate-spin" /> : "Logout"}
           {signingOut && <span className="ml-2">Logging out...</span>}
         </NormalButton>
