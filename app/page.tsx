@@ -5,9 +5,9 @@ import { Leva } from "leva";
 
 export default function Home() {
   return (
-    <>
+    <div className="dark">
       <Hero />
       <Leva hidden />
-    </>
+    </div>
   );
 }

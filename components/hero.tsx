@@ -14,7 +14,7 @@ export function Hero() {
 
       <div className="pb-16 mt-auto text-center relative">
         <Pill className="mb-6">FAST & SECURE</Pill>
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-sentient">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-sentient text-white/50">
         Your Health <br />
           <i className="font-light">Our</i> Priority
         </h1>
@@ -34,7 +34,7 @@ export function Hero() {
         <Link className="contents sm:hidden" href="/auth/sign-in">
           <Button
             size="sm"
-            className="mt-14"
+            className="mt-14 text-white"
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
           >
