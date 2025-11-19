@@ -15,10 +15,15 @@ import {
   FileText,
   Users,
   Search,
+  Loader2,
 } from "lucide-react";
 import { Logo } from "./logo";
 import type { Route } from "./nav-main";
 import DashboardNavigation from "./nav-main";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { NormalButton } from "@/components/ui/button-normal";
 
 const dashboardRoutes: Route[] = [
   {
@@ -51,6 +56,15 @@ const dashboardRoutes: Route[] = [
 export function DashboardSidebar() {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
+  const router = useRouter();
+  const [signingOut, setSigningOut] = useState(false);
+  
+    const logout = async () => {
+      setSigningOut(true);
+      await authClient.signOut();
+      router.push("/");
+      setSigningOut(false);
+    };
 
   return (
     <Sidebar variant="floating" collapsible="icon" className="bg-background">
@@ -88,6 +102,10 @@ export function DashboardSidebar() {
         <DashboardNavigation routes={dashboardRoutes} />
       </SidebarContent>
       <SidebarFooter className="px-2">
+        <NormalButton onClick={logout} variant="outline" className="w-full">
+          {signingOut ? <Loader2 className="size-4 animate-spin" /> : "Logout"}
+          {signingOut && <span className="ml-2">Logging out...</span>}
+        </NormalButton>
       </SidebarFooter>
     </Sidebar>
   );

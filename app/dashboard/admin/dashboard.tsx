@@ -20,7 +20,6 @@ import {
   Activity,
   ArrowRight,
   Shield,
-  UserPlus,
 } from "lucide-react";
 
 interface AdminDashboardProps {
@@ -163,13 +162,6 @@ const AdminDashboard = ({ stats }: AdminDashboardProps) => {
           <h2 className="text-xl font-semibold tracking-tight">
             Quick Actions
           </h2>
-          {/* @ts-expect-error Route will be created */}
-          <Link href={"/dashboard/admin/users/new"}>
-            <NormalButton size="sm" variant="outline">
-              <UserPlus className="h-4 w-4" />
-              Create User
-            </NormalButton>
-          </Link>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

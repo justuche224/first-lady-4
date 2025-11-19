@@ -52,7 +52,7 @@ const ReceptionistDashboard = ({ stats }: ReceptionistDashboardProps) => {
       title: "Schedule Appointment",
       description: "Book a new appointment for a patient",
       icon: <Calendar className="h-6 w-6" />,
-      href: "/dashboard/receptionist/appointments/new",
+      href: "/dashboard/receptionist/appointments",
       color: "text-purple-600 dark:text-purple-400",
       bgColor: "bg-purple-50 dark:bg-purple-950",
     },

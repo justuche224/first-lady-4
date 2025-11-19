@@ -18,11 +18,15 @@ import {
   Users,
   Pill,
   UserCheck,
+  Loader2,
 } from "lucide-react";
 import { Logo } from "./logo";
 import type { Route } from "./nav-main";
 import DashboardNavigation from "./nav-main";
-import { TeamSwitcher } from "./team-switcher";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { NormalButton } from "../ui/button-normal";
+import { useState } from "react";
 
 const dashboardRoutes: Route[] = [
   {
@@ -69,16 +73,18 @@ const dashboardRoutes: Route[] = [
   },
 ];
 
-const teams = [
-  { id: "1", name: "Alpha Inc.", logo: Logo, plan: "Free" },
-  { id: "2", name: "Beta Corp.", logo: Logo, plan: "Free" },
-  { id: "3", name: "Gamma Tech", logo: Logo, plan: "Free" },
-];
-
 export function DashboardSidebar() {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
+  const router = useRouter();
+const [signingOut, setSigningOut] = useState(false);
 
+  const logout = async () => {
+    setSigningOut(true);
+    await authClient.signOut();
+    router.push("/");
+    setSigningOut(false);
+  };
   return (
     <Sidebar variant="floating" collapsible="icon" className="bg-background">
       <SidebarHeader
@@ -115,7 +121,10 @@ export function DashboardSidebar() {
         <DashboardNavigation routes={dashboardRoutes} />
       </SidebarContent>
       <SidebarFooter className="px-2">
-        <TeamSwitcher teams={teams} />
+        <NormalButton onClick={logout} variant="outline" className="w-full">
+          {signingOut ? <Loader2 className="size-4 animate-spin" /> : "Logout"}
+          {signingOut && <span className="ml-2">Logging out...</span>}
+        </NormalButton>
       </SidebarFooter>
     </Sidebar>
   );
